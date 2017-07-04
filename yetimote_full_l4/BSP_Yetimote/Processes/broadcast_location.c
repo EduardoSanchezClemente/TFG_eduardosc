@@ -75,27 +75,13 @@ void broadcast_location_recv(struct broadcast_conn *c, const linkaddr_t *from){
 		addrByte = linkaddr_node_addr.u8[0];
 
 
-	//	UsbWriteString("I AM MASTER (Bytes): ");
-
-//		usb_printf("I AM MASTER: BC RECEIVED FROM %d.%d \r\n", from->u8[0],from->u8[1]);
-	//	usb_printf("RSSI RECEIVED FROM IDENTIFIER %d.%d : %d dBm\r\n", from->u8[0],from->u8[1], msg_rssi);
-//		usb_printf(" \r\n");
-	//	usb_printf("EL LOCALIZADOR (Bytes): %d.%d HA SIDO DETECTADO POR EL NODO MASTER CON UN RSSI DE %d dBm \r\n", from->u8[0],from->u8[1], msg_rssi);
-		//usb_printf(" \r\n");
 
 		usb_printf("%c", pream);
 		usb_printf("%c%c",from->u8[0],from->u8[1]);
 
-		//sprintf(sprintfString, "%d",(int) addrByte);
-	//	UsbWriteString(sprintfString);
-	//	UsbWriteString(".");
-		//usb_printf("%d.", addrByte);
 		usb_printf("%c%c", linkaddr_node_addr.u8[0], linkaddr_node_addr.u8[1]);
 
-		//addrByte = linkaddr_node_addr.u8[1];
-		//sprintf(sprintfString, "%d",(int) addrByte);
-	//	UsbWriteString(sprintfString);
-		//usb_printf("%d", addrByte);
+
 		usb_printf("%d\r\n", msg_rssi);
 
 	}

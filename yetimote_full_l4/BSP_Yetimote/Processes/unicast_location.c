@@ -78,22 +78,10 @@ void unicast_location_recv(struct unicast_conn *c, const linkaddr_t *from){
 		memcpy(&src_addr, packetbuffptr + sizeof(int), sizeof(linkaddr_t));
 		node_addr = *from;
 		char* sprintfString = pvPortMalloc(MAX_OUT_STR_BUFF);
-	//	usb_printf("I AM MASTER: UC MESSAGE RECEIVED FROM NODE %d.%d \r\n", from->u8[0],from->u8[1]);
 
 		uint32_t addrByte;
 		addrByte = src_addr.u8[0];
-	//	UsbWriteString("EL LOCALIZADOR (Bytes): ");
 
-	//	usb_printf(" HA SIDO DETECTADO POR EL NODO (Bytes): %d.%d CON UN RSSI DE %d dBm \r\n", from->u8[0],from->u8[1], msg_rssi);
-	//	usb_printf(" \r\n");
-	//	usb_printf("%d",pream);
-	//   sprintf(sprintfString, "%d",(int) addrByte);
-	//    UsbWriteString(sprintfString);
-	//    UsbWriteString(".");
-	//    addrByte = src_addr.u8[1];
-	//    sprintf(sprintfString, "%d",(int) addrByte);
-	//    UsbWriteString(sprintfString);
-    //	usb_printf(" %d.%d %d\r\n", from->u8[0],from->u8[1], msg_rssi);
 		usb_printf("%c", pream);
 		usb_printf("%c%c",src_addr.u8[0],src_addr.u8[1]);
 		usb_printf("%c%c",from->u8[0],from->u8[1]);
