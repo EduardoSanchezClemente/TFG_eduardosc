@@ -1,0 +1,94 @@
+Configuration	yetimote_full_l4
+STM32CubeMX 	4.18.0
+Date	01/20/2017
+MCU	STM32L476RETx
+
+
+
+PERIPHERALS	MODES	FUNCTIONS	PINS
+I2C1	I2C	I2C1_SCL	PB6
+I2C1	I2C	I2C1_SDA	PB7
+LPTIM1	Counts internal clock events	LPTIM1_VS_LPTIM_counterModeInternalClock	VP_LPTIM1_VS_LPTIM_counterModeInternalClock
+RCC	Crystal/Ceramic Resonator	RCC_OSC32_IN	PC14/OSC32_IN
+RCC	Crystal/Ceramic Resonator	RCC_OSC32_OUT	PC15/OSC32_OUT
+RTC	Activate RTC Clock Source	RTC_VS_RTC_Activate	VP_RTC_VS_RTC_Activate
+RTC	RTC Enabled	RTC_VS_RTC_Calendar	VP_RTC_VS_RTC_Calendar
+RTC	Internal Alarm A	RTC_VS_RTC_Alarm_A_Intern	VP_RTC_VS_RTC_Alarm_A_Intern
+SDMMC1	SD 4 bits Wide bus	SDMMC1_CK	PC12
+SDMMC1	SD 4 bits Wide bus	SDMMC1_CMD	PD2
+SDMMC1	SD 4 bits Wide bus	SDMMC1_D0	PC8
+SDMMC1	SD 4 bits Wide bus	SDMMC1_D1	PC9
+SDMMC1	SD 4 bits Wide bus	SDMMC1_D2	PC10
+SDMMC1	SD 4 bits Wide bus	SDMMC1_D3	PC11
+SPI2	Full-Duplex Master	SPI2_MISO	PB14
+SPI2	Full-Duplex Master	SPI2_MOSI	PB15
+SPI2	Full-Duplex Master	SPI2_SCK	PB13
+SYS	Trace Asynchronous Sw	SYS_JTMS-SWDIO	PA13
+SYS	Trace Asynchronous Sw	SYS_JTCK-SWCLK	PA14
+SYS	Trace Asynchronous Sw	SYS_JTDO-SWO	PB3
+SYS	TIM8	SYS_VS_tim8	VP_SYS_VS_tim8
+USB_OTG_FS	Device_Only	USB_OTG_FS_DM	PA11
+USB_OTG_FS	Device_Only	USB_OTG_FS_DP	PA12
+
+
+
+Pin Nb	PINs	FUNCTIONs	LABELs
+3	PC14/OSC32_IN	RCC_OSC32_IN	
+4	PC15/OSC32_OUT	RCC_OSC32_OUT	
+8	PC0	GPIO_EXTI0	
+10	PC2	GPIO_EXTI2	
+24	PC4	GPIO_EXTI4	
+26	PB0	GPIO_Output	
+27	PB1	GPIO_EXTI1	
+28	PB2	GPIO_Output	
+33	PB12	GPIO_Output	
+34	PB13	SPI2_SCK	
+35	PB14	SPI2_MISO	
+36	PB15	SPI2_MOSI	
+37	PC6	GPIO_Output	
+38	PC7	GPIO_Output	
+39	PC8	SDMMC1_D0	
+40	PC9	SDMMC1_D1	
+41	PA8	GPIO_Output	
+44	PA11	USB_OTG_FS_DM	
+45	PA12	USB_OTG_FS_DP	
+46	PA13	SYS_JTMS-SWDIO	
+49	PA14	SYS_JTCK-SWCLK	
+50	PA15	GPIO_Output	
+51	PC10	SDMMC1_D2	
+52	PC11	SDMMC1_D3	
+53	PC12	SDMMC1_CK	
+54	PD2	SDMMC1_CMD	
+55	PB3	SYS_JTDO-SWO	
+56	PB4	GPIO_Output	
+57	PB5	GPIO_Output	
+58	PB6	I2C1_SCL	
+59	PB7	I2C1_SDA	
+
+
+
+SOFTWARE PROJECT
+
+Project Settings : 
+Project Name : yetimote_full_l4
+Project Folder : D:\Repos\git_easysafe\SW\yetimote_full\yetimote_full_l4\yetimote_full_l4
+Toolchain / IDE : SW4STM32
+Firmware Package Name and Version : STM32Cube FW_L4 V1.6.0
+
+
+Code Generation Settings : 
+STM32Cube Firmware Library Package : Copy all used libraries into the project folder
+Generate peripheral initialization as a pair of '.c/.h' files per peripheral : Yes
+Backup previously generated files when re-generating : No
+Delete previously generated files when not re-generated : Yes
+Set all free pins as analog (to optimize the power consumption) : No
+
+
+Toolchains Settings : 
+Compiler Optimizations : Balanced Size/Speed
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+Al regenerar el proyecto en CubeMX hay que realizar algunos cambios a mano para que funcione en el STM32L4:
+
+- Lo primero de todo, debes exportar las settings del proyecto ya que CubeMX no las respeta. Para ello, click botón derecho sobre la carpeta del proyecto, seleccionas Export y, a continuación, bajo la carpeta C/C++, seleccionas C/C++ Project Settings y Next. Asegúrate de que exportas tanto Include Paths como Symbols, añade la ruta del fichero que quieres generar con las settings y, por último, pincha en Finish. Una vez regeneres el proyecto con CubeMX, podrás importar este fichero siguiendo un proceso similar.
+
+- Eliminar los ficheros generados en la carpeta User del proyecto dentro de Eclipse. Dentro de esta carpeta solo debe haber las siguientes carpetas: BSP_Yetimote, Net, OS y Src. En ocasiones, estas 4 carpetas (BSP_Yetimote, Net, OS y Src) no se quedan correctamente linkadas. En tal caso, click botón derecho sobre ellas e ir a Propiedades. Seleccionar Resource, editar el link (Location) y poner según corresponda: ../../BSP_Yetimote , ../../Net , ../../OS, ../../Src.
+
+- Eliminar FreeRTOS de Middlewares. En la carpeta Middlewares del proyecto borrar la que pone FreeRTOS. (Esto no borra el SO ya que se encuentra en otra carpeta BSP_Yetimote/OS).
+
+- Eliminar el fichero usbd_desc.c y usbd_conf.c que se encuentran en la carpeta Src. (Esto no borra los ficheros del usb, los ficheros correctos se encuentran en BSP_Yetimote/USB_Func).
+
+- Eliminar la carpeta CMSIS dentro de la carpeta Drivers.
+
+- Quita el flag de optimización del compilador. Para ello, en las Propiedades del proyecto vas a Settings en la sección C/C++ Build. En la pestaña Tool Settings, dentro del apartado MCU GCC Compiler, vas a Optimization y en la opción Optimization Level debes asegurarte de que está seleccionada la opción None (-O0). Apply, OK y listo.
+
+
+NOTA: Aun así, cada versión que están sacando de CubeMX tiene un comportamiento ligeramente distinto de la anterior, por lo que es probable que descubras nuevos problemas.
