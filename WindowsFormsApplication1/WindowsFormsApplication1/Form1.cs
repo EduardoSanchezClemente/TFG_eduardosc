@@ -135,29 +135,12 @@ namespace WindowsFormsApplication1
                     outputWriter.Close();  //Cerramos el texto
                     outputFS.Close();
 
-                    //HASTA AQUI BIEN
-
-
-                    //TENGO QUE GUARDAR EN UNA MATRIZ PLACA_NODO EL NODO QUE SE HA DETECTADO PARA CADA PLACA SINO SE PIERDE
 
 
 
                     aux_nodo = node_addr;
                     aux_placa = src_addr;
-                    for (int i = 0; i < nodos.Length - 1; i++)
-                    {
-                        if (nodos[i] == aux_nodo)
-                        {
-                            aux = 1;
-                        }
-                    }
-
-                    if (aux != 1)
-                    {
-                        nodos[posicion_nodo] = aux_nodo;
-                        posicion_nodo++;
-                    }
-
+                  
                     for (int i = 0; i < placas.Length - 1; i++)
                     {
                         if (placas[i] == aux_placa)
@@ -167,6 +150,7 @@ namespace WindowsFormsApplication1
                             {
                                 placa_RSSI[i] = rssi;
                                 var_node = node_addr;
+                                nodos[i] = node_addr;
                                 var_placa = src_addr;
                                 var_rssi = placa_RSSI[i];
 
@@ -176,7 +160,8 @@ namespace WindowsFormsApplication1
                     }
                     if (aux2 != 1)
                     {
-
+                        nodos[posicion_placa] = aux_nodo;
+                        var_rssi = rssi;
                         placas[posicion_placa] = aux_placa;
                         placa_RSSI[posicion_placa] = rssi;
                         posicion_placa++;
@@ -186,17 +171,16 @@ namespace WindowsFormsApplication1
                     aux = 0;
                     aux2 = 0;
 
-                    //HASTA AQUI BIEN
 
                     this.BeginInvoke((MethodInvoker)delegate         // runs on UI thread
                     {
-                      /*  for (int i = 0; i < placas.Length - 1; i++)
+                        for (int i = 0; i < placas.Length - 1; i++)
                         {
                             if (placas[i] != 0)
                             {
-                                trace_box.AppendText("El RSSI más grande de la placa " + placas[i] + " detectado por el nodo " + var_node + " es de " + var_rssi +" dBm" + "\r\n");
+                                trace_box.AppendText("El RSSI más grande de la placa " + placas[i] + " detectado por el nodo " + nodos[i] + " es de " + placa_RSSI[i] +" dBm" + "\r\n");
                             }
-                        }*/
+                        }
                                   
                     });
 
