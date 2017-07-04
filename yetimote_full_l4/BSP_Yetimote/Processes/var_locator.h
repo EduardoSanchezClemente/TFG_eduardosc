@@ -9,7 +9,7 @@ enum node_role {
 	MASTER
 };
 
-#define NODE_ROLE IDENTIFIER     //MODIFICAR PARA PROGRAMAR CADA TIPO DE NODO.
+#define NODE_ROLE MASTER     //MODIFICAR PARA PROGRAMAR CADA TIPO DE NODO.
 
 uint8_t flag;
 linkaddr_t src_addr;                 //Address del localizador

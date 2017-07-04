@@ -83,8 +83,8 @@ void unicast_location_recv(struct unicast_conn *c, const linkaddr_t *from){
 		addrByte = src_addr.u8[0];
 
 		usb_printf("%c", pream);
-		usb_printf("%c%c",src_addr.u8[0],src_addr.u8[1]);
-		usb_printf("%c%c",from->u8[0],from->u8[1]);
+		usb_printf("%c%c" ,src_addr.u8[0],src_addr.u8[1]);
+		usb_printf("%c%c" ,from->u8[0],from->u8[1]);
 		usb_printf("%d\r\n", msg_rssi);
 
 	}

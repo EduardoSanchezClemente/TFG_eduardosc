@@ -214,40 +214,7 @@ void processes_init(void){
 	//Proceso de ejemplo de envío por unicast_location
 	osThreadDef(UnicastLocationTask, UnicastLocation_func, osPriorityBelowNormal, 0, 192);
 	osThreadCreate(osThread(UnicastLocationTask), NULL);
-//
 
-
-
-
-
-	//Proceso de ejemplo de envío por broadcast
-//	osThreadDef(BroadcastExampleTask, BroadcastExample_func, osPriorityBelowNormal, 0, 192);
-//	osThreadCreate(osThread(BroadcastExampleTask), NULL);
-//
-//	//Proceso de ejemplo de envío por unicast
-//	osThreadDef(UnicastExampleTask, UnicastExample_func, osPriorityBelowNormal, 0, 192);
-//	osThreadCreate(osThread(UnicastExampleTask), NULL);
-
-	//Proceso de ejemplo de envío por mesh
-//	osThreadDef(MeshExampleTask, MeshExample_func, osPriorityBelowNormal, 0, 256);
-//	osThreadCreate(osThread(MeshExampleTask), NULL);
-
-
-	//Procesos de test de easysafe
-//	osThreadDef(EasysafeUnicastTestTask, easysafeUnicastTest_callback, osPriorityNormal, 0, 256);
-//	osThreadCreate(osThread(EasysafeUnicastTestTask), NULL);
-//
-//	osThreadDef(EasysafeMeshTestTask, easysafeMeshTest_callback, osPriorityNormal, 0, 256);
-//	osThreadCreate(osThread(EasysafeMeshTestTask), NULL);
-
-//	osThreadDef(DataAdquisitionTask, data_acquisition_Task_main, osPriorityNormal, 0, 256);
-//	osThreadCreate(osThread(DataAdquisitionTask), NULL);
-
-//	osThreadDef(Lis3dhAdquisitionTask, lis3dh_acquisition_Task_main, osPriorityNormal, 0, 256);
-//	osThreadCreate(osThread(Lis3dhAdquisitionTask), NULL);
-
-//	osThreadDef(AccelerometerTestTask, accelerometer_test_task_callback, osPriorityNormal, 0, 256);
-//	osThreadCreate(osThread(AccelerometerTestTask), NULL);
 
 }
 
@@ -264,8 +231,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		cc2500_interrupt();			//A packet is sent o received
 	}
 
-	if(GPIO_Pin ==  SPIRIT_433_GPIO_IRQ){								//RRZ DESCOMENTAR PARA QUE FUNCIONE LA RADIO A 433. CON LOS NODOS ACTUALES ESTA COMPARTIDO ESTE PIN
-		spirit1_interrupt_callback(); //A packet is sent o received		// CON EL DE INTERRUPCION DEL ACELEROMETRO Y SOLO SE PUEDE USAR UNO U OTRO
+	if(GPIO_Pin ==  SPIRIT_433_GPIO_IRQ){
+		spirit1_interrupt_callback(); //A packet is sent o received
 	}
 
 	if(GPIO_Pin ==  SPIRIT_868_GPIO_IRQ){
