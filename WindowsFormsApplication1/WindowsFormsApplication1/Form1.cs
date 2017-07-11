@@ -2,6 +2,8 @@
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
+using System.Windows;
 
 
 namespace WindowsFormsApplication1
@@ -9,16 +11,13 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
         int var_rssi = -100;
-        UInt16 var_node = 0;  //Como lo inicializo?
-        UInt16 var_placa = 0;  //Como lo inicializo?
-        UInt16 aux_nodo = 0;  //Como lo inicializo?
+        UInt16 var_node = 0;  
+        UInt16 var_placa = 0;  
+        UInt16 aux_nodo = 0;  
         UInt16 aux_placa = 0;
-        int aux = 0;
         int aux2 = 0;
-        int posicion_nodo = 0;
         int posicion_placa = 0;
         int [,] placa_nod = new int[10,10] { { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, };
-        //  int[][] placa_nod = new int[10][] { { -100, -100, -100, -100, -100, -100, -100, -100, -100, -100 }, new int[10], new int[10], new int[10], new int[10], new int[10], new int[10], new int[10], new int[10], new int[10] };
         int[] placa_RSSI = new int[10];
 
         UInt16[] placas = new UInt16[10];
@@ -32,7 +31,8 @@ namespace WindowsFormsApplication1
                                 //C:\Users\eduardosc\Desktop\Prueba.txt
 
         int contador_datos = 0;
-
+        Brush myBrush = new SolidBrush(Color.Red);
+        Brush transparentBrush = new SolidBrush(Color.Black);
         bool started = false;
         Thread readThread;
         public Form1()
@@ -47,8 +47,7 @@ namespace WindowsFormsApplication1
                 start_button.Text = "START";
                 started = false;
 
-
-
+                
                 try
                 {
                     this.BeginInvoke((MethodInvoker)delegate         // runs on UI thread
@@ -123,7 +122,6 @@ namespace WindowsFormsApplication1
 
                     LecturasRSSI = "Lecturas.txt";
 
-                    //a veces la interfaz se queda pillada con lo del outputWriter
                     outputFS = (System.IO.FileStream)File.Open(LecturasRSSI, FileMode.Append, FileAccess.Write);
 
                     outputWriter = new System.IO.StreamWriter(outputFS);
@@ -168,7 +166,6 @@ namespace WindowsFormsApplication1
                     }
 
                   
-                    aux = 0;
                     aux2 = 0;
 
 
@@ -178,7 +175,25 @@ namespace WindowsFormsApplication1
                         {
                             if (placas[i] != 0)
                             {
-                                trace_box.AppendText("El RSSI más grande de la placa " + placas[i] + " detectado por el nodo " + nodos[i] + " es de " + placa_RSSI[i] +" dBm" + "\r\n");
+                          //    trace_box.AppendText("El RSSI más grande de la placa " + placas[i] + " detectado por el nodo " + nodos[i] + " es de " + placa_RSSI[i] +" dBm" + "\r\n");
+                                trace_box.AppendText("La placa transmisora " + placas[i] + " se encuentra en la sala del nodo "+ nodos[i] + "\r\n");
+
+                                Graphics g = pictureBox2.CreateGraphics();
+
+                                Rectangle b105 = new Rectangle(Constants.Coordenadas_master_X, Constants.Coordenadas_master_Y, 20, 20);
+                                if (nodos[i] == Constants.ADDR_MASTER)
+                                {
+                                  g.FillRectangle(myBrush, b105);
+                                  g.FillEllipse(transparentBrush, new Rectangle(Constants.INTXA_X, Constants.INTXA_Y, 20, 20));
+
+                                }
+                                if (nodos[i] == Constants.ADDR_NODO)
+                                {
+                                  g.FillEllipse(myBrush, new Rectangle(Constants.INTXA_X, Constants.INTXA_Y, 20, 20));
+                                  g.FillRectangle(transparentBrush, b105);
+
+                                }
+
                             }
                         }
                                   
@@ -196,8 +211,9 @@ namespace WindowsFormsApplication1
         {
             this.BeginInvoke((MethodInvoker)delegate         // runs on UI thread
             {
+                
+
                 trace_box.AppendText("Han pasado 20 segundos, reiniciamos valores\r\n");
-                posicion_nodo = 0;
                 posicion_placa = 0;
                 var_node = 0;
                 var_placa = 0;
@@ -208,7 +224,49 @@ namespace WindowsFormsApplication1
                     nodos[i] = 0;
                     placa_RSSI[i] = -100; 
                 }
+                this.BeginInvoke((MethodInvoker)delegate         // runs on UI thread
+                {
+                    Graphics g = pictureBox2.CreateGraphics();
+
+                    Rectangle b105 = new Rectangle(Constants.Coordenadas_master_X, Constants.Coordenadas_master_Y, 20, 20);
+
+                    g.FillRectangle(transparentBrush, b105);
+                    g.FillEllipse(transparentBrush, new Rectangle(Constants.INTXA_X, Constants.INTXA_Y, 20, 20));
+                });
+
             });
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+    }
+    static class Constants
+    {
+        public const int B1041A_X = 90;
+        public const int B1041A_Y = 90;
+        public const int B1041B_X = 90;
+        public const int B1041B_Y = 290;
+        public const int B1041C_X = 300;
+        public const int B1041C_Y = 300;
+        public const int B105_X = 610;   //610
+        public const int B105_Y = 190;   //190
+        public const int Coordenadas_master_X = 85;
+        public const int Coordenadas_master_Y = 100;
+        public const int CALDERAS_X = 930;
+        public const int CALDERAS_Y = 300;
+        public const int INTXA_X = 930;   //930
+        public const int INTXA_Y = 110;   //110
+        public const int ADDR_MASTER = 14670;
+        public const int ADDR_NODO = 11330;
+
+
     }
 }

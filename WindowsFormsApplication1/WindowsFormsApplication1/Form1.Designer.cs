@@ -29,18 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.start_button = new System.Windows.Forms.Button();
             this.text_serial_port = new System.Windows.Forms.TextBox();
             this.trace_box = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // start_button
             // 
-            this.start_button.Location = new System.Drawing.Point(27, 12);
+            this.start_button.Location = new System.Drawing.Point(37, 12);
             this.start_button.Name = "start_button";
-            this.start_button.Size = new System.Drawing.Size(75, 23);
+            this.start_button.Size = new System.Drawing.Size(75, 57);
             this.start_button.TabIndex = 0;
             this.start_button.Text = "START";
             this.start_button.UseVisualStyleBackColor = true;
@@ -48,7 +51,7 @@
             // 
             // text_serial_port
             // 
-            this.text_serial_port.Location = new System.Drawing.Point(165, 15);
+            this.text_serial_port.Location = new System.Drawing.Point(37, 85);
             this.text_serial_port.Name = "text_serial_port";
             this.text_serial_port.Size = new System.Drawing.Size(75, 20);
             this.text_serial_port.TabIndex = 1;
@@ -56,12 +59,12 @@
             // 
             // trace_box
             // 
-            this.trace_box.Location = new System.Drawing.Point(27, 60);
+            this.trace_box.Location = new System.Drawing.Point(132, 12);
             this.trace_box.Multiline = true;
             this.trace_box.Name = "trace_box";
             this.trace_box.ReadOnly = true;
             this.trace_box.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.trace_box.Size = new System.Drawing.Size(930, 200);
+            this.trace_box.Size = new System.Drawing.Size(949, 108);
             this.trace_box.TabIndex = 2;
             // 
             // serialPort1
@@ -74,16 +77,29 @@
             this.timer1.Interval = 20000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(37, 126);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(1044, 398);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(969, 372);
+            this.ClientSize = new System.Drawing.Size(1139, 553);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.trace_box);
             this.Controls.Add(this.text_serial_port);
             this.Controls.Add(this.start_button);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,6 +112,7 @@
         private System.Windows.Forms.TextBox trace_box;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

@@ -16,3 +16,12 @@ C:\Users\eduardosc\Desktop\WindowsFormsApplication1\WindowsFormsApplication1\obj
 C:\Users\eduardosc\Desktop\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\eduardosc\Desktop\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\eduardosc\Desktop\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\eduardosc\Desktop\EDU TFG\Repositorio_TFG\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
