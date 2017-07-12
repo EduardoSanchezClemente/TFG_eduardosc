@@ -65,7 +65,15 @@ void broadcast_location_recv(struct broadcast_conn *c, const linkaddr_t *from){
 	}
 	if ( NODE_ROLE == MASTER) {
 		leds_toggle(LEDS_BLUE);
-		msg_rssi = cc2500_rssi();
+
+		packetbuf_attr_t rssi = packetbuf_attr(PACKETBUF_ATTR_RSSI);
+		if (rssi >= 128){
+			aux_rssi = ((rssi - 256)/2) - 70;
+		}
+		else {
+			aux_rssi = (rssi/2) - 70;
+		}
+	//	msg_rssi = cc2500_rssi();
 		pream = 0xAA;
 		src_addr = *from;
 		node_addr = linkaddr_node_addr;
@@ -82,7 +90,8 @@ void broadcast_location_recv(struct broadcast_conn *c, const linkaddr_t *from){
 		usb_printf("%c%c", linkaddr_node_addr.u8[0], linkaddr_node_addr.u8[1]);
 
 
-		usb_printf("%d\r\n", msg_rssi);
+		usb_printf("%d\r\n", aux_rssi);
+		//usb_printf("Este el el nuevo RSSI: %d\r\n", aux_rssi);
 
 	}
 }

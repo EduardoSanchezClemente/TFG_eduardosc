@@ -62,8 +62,8 @@
 osThreadId InitTaskHandle;
 
 /* USER CODE BEGIN Variables */
-#define LPTIM_CLOCK_HZ					32768 //NODOS
-//#define LPTIM_CLOCK_HZ					32000    //TRANSMISOR
+//#define LPTIM_CLOCK_HZ					32768 //NODOS
+#define LPTIM_CLOCK_HZ					32000    //TRANSMISOR
 #define TICKS_PER_SYSTICK_LOW_POWER		(LPTIM_CLOCK_HZ/configTICK_RATE_HZ)
 #define MAX_LOW_POWER_COUNT 			0xFFFF
 #define portNVIC_SYSTICK_CTRL_REG			( * ( ( volatile uint32_t * ) 0xe000e010 ) )

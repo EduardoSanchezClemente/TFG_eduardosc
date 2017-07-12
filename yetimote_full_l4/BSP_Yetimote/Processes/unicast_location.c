@@ -34,9 +34,16 @@ void UnicastLocation_func(void const * argument){
   while(1) {
 	  if (flag == 1){   //flag del broadcast para mandar el unicast
 		  flag = 0;
-		  msg_rssi = cc2500_rssi();
+		  packetbuf_attr_t rssi = packetbuf_attr(PACKETBUF_ATTR_RSSI);
+		  if (rssi >= 128){
+		  	aux_rssi = ((rssi - 256)/2) - 70;
+		  }
+		  else {
+		  	aux_rssi = (rssi/2) - 70;
+		  }
+		  //msg_rssi = cc2500_rssi();
 		  uint8_t* data_to_send = (uint8_t*) pvPortMalloc(48);  // tengo que enviar lo recibido de broadcast_location_recv
-		  memcpy(data_to_send , &msg_rssi, sizeof(int));
+		  memcpy(data_to_send , &aux_rssi, sizeof(int));
 		  memcpy(data_to_send + sizeof(int), &src_addr, sizeof(linkaddr_t));
 
 		  if(!linkaddr_cmp(&dest_addr, &linkaddr_node_addr)) {
@@ -53,7 +60,7 @@ void UnicastLocation_func(void const * argument){
 		  addrByte = src_addr.u8[1];
 		  sprintf(sprintfString, "%d",(int) addrByte);
 		  UsbWriteString(sprintfString);
-		  usb_printf(" TO SEND: %d dBm\r\n", msg_rssi);
+		  usb_printf(" TO SEND: %d dBm\r\n", aux_rssi);
 		  usb_printf(" \r\n");
 		  usb_printf("I AM NODE: UC MESSAGE TRANSMITED TO MASTER 78.57 \r\n");
 		  usb_printf(" \r\n");
@@ -74,7 +81,7 @@ void unicast_location_recv(struct unicast_conn *c, const linkaddr_t *from){
 	uint8_t* packetbuffptr = (uint8_t*) packetbuf_dataptr();
 	if (NODE_ROLE == MASTER ){
 		pream = 0xAA;
-		memcpy(&msg_rssi, packetbuffptr , sizeof(int));
+		memcpy(&aux_rssi, packetbuffptr , sizeof(int));
 		memcpy(&src_addr, packetbuffptr + sizeof(int), sizeof(linkaddr_t));
 		node_addr = *from;
 		char* sprintfString = pvPortMalloc(MAX_OUT_STR_BUFF);
@@ -85,7 +92,7 @@ void unicast_location_recv(struct unicast_conn *c, const linkaddr_t *from){
 		usb_printf("%c", pream);
 		usb_printf("%c%c" ,src_addr.u8[0],src_addr.u8[1]);
 		usb_printf("%c%c" ,from->u8[0],from->u8[1]);
-		usb_printf("%d\r\n", msg_rssi);
+		usb_printf("%d\r\n", aux_rssi);
 
 	}
 
